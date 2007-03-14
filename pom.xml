@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+
+	<!-- 
+		General
+	-->
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>gmlib</groupId>
+	<artifactId>gmlib</artifactId>
+	<version>0.1.0-RC2</version>
+	<packaging>jar</packaging>
+
+
+	<!-- 
+		Optional 
+	-->
+	<name>Gmail Library</name>
+	<url>http://gmlib.sourceforge.net/</url>
+	<description>An Java based API for accessing Google's Gmail service.</description>
+	<developers>
+		<developer>
+			<name>Björn Sjögren</name>
+			<roles>
+				<role>Manager</role>
+				<role>Developer</role>
+			</roles>
+			<url>http://sourceforge.net/users/lokan/</url>
+		</developer>
+	</developers>
+	<licenses>
+		<license>			
+			<name>LGPL</name>
+			<url>http://www.gnu.org/licenses/lgpl.html</url>			
+		</license>
+	</licenses>
+	<issueManagement>
+		<system>Sourceforge</system>
+		<url>http://sourceforge.net/tracker/?group_id=189762</url>
+	</issueManagement>
+	<scm>	
+		<url>http://gmlib.cvs.sourceforge.net/gmlib/</url>
+	</scm>
+	<mailingLists>
+		<mailingList>
+			<name>Mailing List Summary</name>
+			<archive>http://sourceforge.net/mail/?group_id=189762</archive>
+		</mailingList>
+	</mailingLists>
+	<!-- 
+		Build
+	-->
+	<build>
+		<plugins>
+			<plugin>
+              <groupId>org.codehaus.plexus</groupId>
+              <artifactId>plexus-maven-plugin</artifactId>
+              <executions>
+                <execution>
+                  <goals>
+                    <goal>descriptor</goal>
+                  </goals>
+                </execution>
+              </executions>
+            </plugin>		
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<version>2.1</version>
+			</plugin>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<compilerVersion>1.5</compilerVersion>
+					<source>1.5</source>
+					<target>1.5</target>
+					<debug>true</debug>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>cobertura-maven-plugin</artifactId>
+				<version>2.0</version>
+				<configuration>
+					<check>
+						<branchRate>85</branchRate>
+						<lineRate>85</lineRate>
+						<haltOnFailure>true</haltOnFailure>
+						<totalBranchRate>85</totalBranchRate>
+						<totalLineRate>85</totalLineRate>
+						<packageLineRate>85</packageLineRate>
+						<packageBranchRate>85</packageBranchRate>
+						<regexes>
+							<regex>
+								<pattern>com.lokan.gmlib.*</pattern>
+								<branchRate>90</branchRate>
+								<lineRate>80</lineRate>
+							</regex>
+							<regex>
+								<pattern>org.json.*</pattern>
+								<branchRate>40</branchRate>
+								<lineRate>30</lineRate>
+							</regex>
+						</regexes>
+					</check>
+				</configuration>
+				<executions>
+					<execution>
+						<goals>
+							<goal>clean</goal>
+							<goal>check</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+
+
+	<!-- 
+		Dependeces
+	-->
+	<dependencies>
+		<dependency>
+			<groupId>commons-httpclient</groupId>
+			<artifactId>commons-httpclient</artifactId>
+			<version>3.0.1</version>
+		</dependency>
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>1.2.14</version>
+		</dependency>
+	</dependencies>
+
+
+	<!-- 
+		Reporting
+	-->
+	<reporting>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<version>2.1</version>
+			</plugin>
+				<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>surefire-report-maven-plugin</artifactId>
+				</plugin>
+			<plugin>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<configuration>
+					<minmemory>128m</minmemory>
+					<maxmemory>512</maxmemory>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>cobertura-maven-plugin</artifactId>
+				<version>2.0</version>
+			</plugin>
+			<plugin>
+        		<artifactId>maven-assembly-plugin</artifactId>
+        		<configuration>
+          			<descriptor>src/main/assembly/dep.xml</descriptor>
+					<outputDirectory>${project.build.directory}</outputDirectory>
+        		</configuration>
+      		</plugin>
+		</plugins>
+	</reporting>
+
+	<!-- 
+		Distribution
+	-->
+	<distributionManagement>
+		<repository>
+			<id>local.filesystem</id>
+			<name>Local filesystem</name>
+			<url>file://${basedir}/target/deploy</url>
+		</repository>
+		<site>
+			<id>local.filesystem</id>
+			<name>Local filesystem</name>
+			<url>file://${basedir}/target/site-deploy</url>
+		</site>
+	</distributionManagement>
+</project>
+

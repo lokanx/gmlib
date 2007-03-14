@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<project name="gmlib" 
+>
+<!--  http://maven.apache.org/maven-navigation-1.0.xsd -->
+  <bannerLeft>  	
+    <name>gmlib</name>
+    <src>http://sflogo.sourceforge.net/sflogo.php?group_id=189762&amp;type=1</src>
+    <href>http://sourceforge.net</href>
+  </bannerLeft>
+  <bannerRight>
+    <src>http://images.sourceforge.net/images/project-support.jpg</src>
+    <href>http://sourceforge.net/donate/index.php?group_id=189762</href>
+  </bannerRight>
+  <publishDate format="yyyy-MM-dd " position="left" />
+  <!-- 
+  <skin>
+    <groupId>org.apache.maven.skins</groupId>
+    <artifactId>maven-stylus-skin</artifactId>
+    <version>1.0</version>
+  </skin>
+   -->  
+  <body>
+    <links>
+      <item name="Gmail" href="http://mail.google.com" />
+      <item name="Sourceforge" href="http://sourceforge.net" />
+      <item name="Apache" href="http://www.apache.org/" />
+      <item name="Maven" href="http://maven.apache.org"/>
+    </links>
+
+	<menu name="Overview">
+	  <item name="Usage" href="usage.html"/>
+      <item name="Download" href="download.html"/>
+      <item name="Javadocs" href="apidocs/index.html"/>
+    </menu>
+    <!-- this will generate a list of sub modules in the menu -->
+    ${modules}  
+    <!-- add this if you want your reports in the menu as well -->
+     ${reports}
+  </body>        
+</project>

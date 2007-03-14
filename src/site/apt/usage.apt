@@ -1,0 +1,40 @@
+Usage
+  
+  The library is very easy to use, first make sure you have all the {{{dependencies.html}required}} jars in the classpath 
+  then have a look at the sample source bellow.
+
+-----
+public void printContacts() {
+    // Setup session and contact manager
+    String username = "<gmail username or email address>";
+    String password = "<gmail password>";
+    GMSession session = new GMSession(username, password);
+    GMContactManager manager = new GMContactManager(session);
+    
+    // Retrieve all contacts and do some processing on each contact
+    GMContact[] contacts = manager.getAllGMContacts();
+    for (int i = 0; i < contacts.length; i++) {
+        // Do some fancy stuff here
+    }
+
+    // Add a new contact
+    GMContact contact = new GMContact(
+            "TEST TESTINGSSON", 
+            "test.testingsson@testnet.com", 
+            "Test comment");        
+    contact = manager.addGMContact(contact);
+
+    // Update contact
+    contact.setNote("A new note.");
+    manager.updateGMContact(contact);
+    
+    // Remove contact.
+    manager.removeGMContact(contact);
+    
+    // End session.
+    manager = null;
+    session.logout();
+    session = null;
+}
+-----
+  
